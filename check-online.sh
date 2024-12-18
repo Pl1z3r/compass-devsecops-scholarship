@@ -36,7 +36,7 @@ DATETIME=$(date "+%d-%m-%Y %H:%M:%S")
 
 # Verifica a conectividade com o servidor
 if curl --connect-timeout $TIMEOUT -s "${SERVER_URL}:${SERVER_PORT}" > /dev/null; then
-  echo "[$DATETIME] nginx server was found running on ${SERVER_URL}:${SERVER_PORT}" >> "$LOG_DIR/found.log"
+  echo "[$DATETIME] nginx server did was found running on ${SERVER_URL}:${SERVER_PORT}" >> "$LOG_DIR/found.log"
 else
   echo "[$DATETIME] nginx server was not found running on ${SERVER_URL}:${SERVER_PORT}" >> "$LOG_DIR/notFound.log"
 fi
