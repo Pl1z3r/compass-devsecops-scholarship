@@ -14,13 +14,18 @@
 8. Por fim, insira um nome de usuario e senha para o sistema Linux (não precisando ser equivalente ao usuario windows);
 
 ## Instalando Nginx
-```apt update``` e ```apt upgrade -y```
-### Monitoramento de Servidor Nginx
+* Atualizar o sistema em preparo para a instalação.
+1. ```apt update```
+2. ```apt upgrade -y```
+* Instalar o Nginx
+3. ```apt install nginx```
+* Apenas isso é o suficiente para validar o script, já que por padrão o nginx hospeda uma pagina de boas-vindas.
 
+### Monitoramento de Servidor Nginx
 check-nginx.sh permite verificar se um servidor Nginx está em execução em um determinado endereço e porta, com a flexibilidade de configurar diversos parâmetros de execução diretamente pela linha de comando. Caso o servidor esteja ativo, o script registra a informação em um arquivo de log específico. Caso contrário, registra que o servidor não foi encontrado em outro log específico.
 #### Funcionalidade
 
-- Verifica se o servidor Nginx está acessível no URL e porta especificados.
+- Verifica se o servidor Nginx está acessível no URL e porta especificados, usando ```curl```.
 - Registra no arquivo found.log caso o servidor Nginx esteja ativo.
 - Registra no arquivo notFound.log caso o servidor Nginx não esteja ativo.
 - A data e hora da verificação são incluídas em cada entrada de log.
