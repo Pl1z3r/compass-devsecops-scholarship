@@ -28,20 +28,20 @@ install_requirements() {
 setup_cronjob() {
   echo "Configurando Cron Job..."
 
-  SCRIPT_PATH="$(dirname "$(realpath "$0")")/projeto-estagio"
+  SCRIPT_PATH="$(dirname "$(realpath "$0")")/compass-devsecops-scholarship"
   CRON_JOB="*/5 * * * * $SCRIPT_PATH -d $SCRIPT_PATH/logs"
 
   if crontab -l | grep -F -q "$SCRIPT_PATH"; then
     echo "Cron job já existe..."
   else
-    (crontab -l; echo "$CRON_JOB") | crontab -
+    (sudo -u $(logname) crontab -l; echo "$CRON_JOB") | sudo -u $(logname) crontab -
     echo "Cron job foi criado com sucesso!"
   fi
 }
 
 check_root
 install_nginx
-git clone https://github.com/Pl1z3r/projeto-estagio.git
+git clone https://github.com/Pl1z3r/compass-devsecops-scholarship.git
 setup_cronjob
 
 echo "done..."
