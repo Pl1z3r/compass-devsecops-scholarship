@@ -96,11 +96,11 @@ Adicione a seguinte linha ao `crontab -e`:
 ---
 
 ## 🔧 Script de Instalação localhost
-O script ```install.sh``` abaixo automatiza a instalação e configuração do projeto em um ambiente local.
+O script ```install.sh``` automatiza a instalação e configuração do projeto em um ambiente local.
 
 ### 🔧 Como Executar o Script:
 
-1. Salve o código acima em um arquivo chamado `install.sh`. 🖥️
+1. Salve o script em um arquivo chamado `install.sh`. 🖥️
 2. Torne o script executável:
 
 ```bash
