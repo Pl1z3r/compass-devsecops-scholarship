@@ -25,11 +25,15 @@
 ## 🪟 Instalando WSL
 
 1. Abra o **Painel de Controle** e acesse **Programas**.
-![Programas](images/painel-de-controle.png)
+
+    ![Programas](images/painel-de-controle.png)
+
 2. Habilite o recurso **Subsistema do Windows para Linux** em:
    - *"Ativar ou desativar recursos do Windows"*.
-   ![Ativar ou desativar recursos do Windows](images/recursos-windows.png)
-   ![ativar wsl](images/ativar-wsl.png)
+
+        ![Ativar ou desativar recursos do Windows](images/recursos-windows.png)
+        ![ativar wsl](images/ativar-wsl.png)
+
 3. Reinicie o computador quando solicitado.
 4. Abra o **Windows PowerShell** como administrador e execute o comando:
    ```bash
@@ -39,7 +43,8 @@
 5. Reinicie novamente o computador.
 6. Inicie o **Ubuntu** pelo menu iniciar e finalize a configuração:
    - Defina um nome de usuário e uma senha para o Linux (podem ser diferentes do usuário do Windows).
-   ![ubuntu instalado](images/ubuntu-instalado.png)
+
+        ![ubuntu instalado](images/ubuntu-instalado.png)
 
 ---
 
@@ -92,6 +97,45 @@ Adicione a seguinte linha ao `crontab -e`:
 */5 * * * * /caminho/para/seu/script/check-nginx.sh
 ```
 - O script será executado a cada 5 minutos, gerando logs nos arquivos especificados.
+
+---
+
+## ☁️ Configuração do Ambiente AWS
+
+### 🌐 vpc
+Crie um VPC, com sua devida subnet pública e route tables apontando para um internet gateway para acesso público. Por fins de simplicidade exite a seguinte opção na criação do VPC:
+
+![VPC and more](images/vpc-and-more.png)
+
+Assim os recursos necessarios podem ser criados automaticamente seguindo uma configuração. Por base a seguinte configuração é suficiente para o teste deste projeto:
+
+![Criando VPC](images/criando-vpc.png)
+
+resultado:
+
+![vpc final](images/vpc-final.png)
+
+### 🖥️ Crie a instância EC2
+
+O Ubuntu estará sendo usado como sistema operacional nessa demonstração:
+
+![Criando instância Ubuntu](images/ec2-ubuntu.png)
+
+Adicionar atribuição de IP para permitir o acesso público. Também é necessário permitir o acesso a porta 80, http.
+
+![Ativando atribuição automática de ip público](images/auto-assign-ip.png)
+
+Atribuindo o seguinte script a instalação do Nginx será feita automaticamente com o início da instância:
+
+```bash
+#!/bin/bash
+apt update -y
+apt upgrade -y
+
+apt install nginx -y
+systemctl start nginx
+systemctl enable nginx
+```
 
 ---
 
