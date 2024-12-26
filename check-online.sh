@@ -5,7 +5,7 @@ function show_help {
   echo "Uso: $0 [OPÇÕES]"
   echo "  -u URL                  Endereço do servidor (padrão: http://localhost)"
   echo "  -p PORTA                Porta do servidor (padrão: 80)"
-  echo "  -d DIRETORIO_DE_LOGS    Diretório onde os logs serão salvos (padrão: /diretorio/de/logs)"
+  echo "  -d DIRETORIO_DE_LOGS    Diretório onde os logs serão salvos (padrão: ~/nginx-project-logs)"
   echo "  -t TIMEOUT              Tempo limite em segundos para a conexão (padrão: 10)"
   echo "  -h                      Exibe esta ajuda"
 }
