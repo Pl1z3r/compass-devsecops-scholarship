@@ -29,7 +29,7 @@ setup_cronjob() {
   echo "Configurando Cron Job..."
 
   SCRIPT_PATH="$(dirname "$(realpath "$0")")/compass-devsecops-scholarship"
-  CRON_JOB="*/5 * * * * $SCRIPT_PATH -d $SCRIPT_PATH/logs"
+  CRON_JOB="*/5 * * * * $SCRIPT_PATH/check-online.sh -d $SCRIPT_PATH/logs"
 
   if crontab -l | grep -F -q "$SCRIPT_PATH"; then
     echo "Cron job já existe..."
